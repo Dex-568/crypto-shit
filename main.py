@@ -76,16 +76,25 @@ def main():
 
                         # the function returns a list of all possible combinations
 
-                        for ele in caesarcipher(enc, text, shift):
-                            print("Possible combination:", ele)
+                        result = caesarcipher(enc, text, shift)
+                        # some probably abhorrent parsing of data but fuck it its late
+                        result = zip(result[0], result[1])
+                        result = list(result)
 
-                            choice = input("\n1. Back to main menu\n2.Exit\n\n")
+                        print("The Chi-Squared algorithm simply determines the best fit against most common english "
+                              "letters.")
+                        print("False positives can occur depending on the length of the ciphertext!")
+                        print("The lower the number the better:\n")
+                        for ele in result:
+                            print(ele[0], ele[1])
 
-                            if choice == "1":
-                                clear()
-                                pass
-                            else:
-                                exitcond = True
+                        choice = input("\n1. Back to main menu\n2.Exit\n\n")
+
+                        if choice == "1":
+                            clear()
+                            pass
+                        else:
+                            exitcond = True
 
             elif menu == "2":
                 clear()
