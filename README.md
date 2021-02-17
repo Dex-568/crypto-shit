@@ -20,7 +20,7 @@ An example of cryptographical ciphers (symmetrical and asymmetrical), not secure
 
 ## TODO
 
-Other cryptanalysis tools like Kasiski Examination/Index Of Coincidence for the Vigenere Cipher
-Add other ciphers (Affine, Playfair)
-Eventually move onto other cryptographic tools like a Feistel Network/DES or the Enigma
+* Other cryptanalysis tools like Kasiski Examination/Index Of Coincidence for the Vigenere Cipher
+* Add other ciphers (Affine, Playfair)
+* Eventually move onto other cryptographic tools like a Feistel Network/DES or the Enigma
   
