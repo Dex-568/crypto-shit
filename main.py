@@ -2,6 +2,7 @@ import os
 
 from ciphers.caesar import caesarcipher
 from ciphers.vigenere import vigenerecipher
+from ciphers.affine import affinecipher
 
 
 # clears the screen
@@ -17,7 +18,7 @@ def main():
     exitcond = False
     while exitcond is False:
         try:
-            menu = input("1. Caesar Cipher\n2. Vigenere Cipher\n\n")
+            menu = input("1. Caesar Cipher\n2. Vigenere Cipher\n3. Affine Cipher\n\n")
 
             if menu == "1":
                 clear()
@@ -111,7 +112,7 @@ def main():
                     print("Given key:", key)
                     print("Ciphertext output:", vigenerecipher(enc, text, key))
 
-                    choice = input("\n1. Back to main menu\n2.Exit\n\n")
+                    choice = input("\n1. Back to main menu\n2. Exit\n\n")
 
                     if choice == "1":
                         clear()
@@ -132,13 +133,76 @@ def main():
                         print("Given key:", key)
                         print("Plaintext output:", vigenerecipher(enc, text, key))
 
-                        choice = input("\n1. Back to main menu\n2.Exit\n\n")
+                        choice = input("\n1. Back to main menu\n2. Exit\n\n")
 
                         if choice == "1":
                             clear()
                             pass
                         else:
                             exitcond = True
+
+            elif menu == "3":
+                clear()
+
+                encdec = input("1. Encrypt\n2. Decrypt\n\n")
+
+                if encdec == "1":
+                    enc = True
+
+                    text = input("Enter plaintext: ")
+
+                    print("This must be coprime to 26!")
+                    a = int(input("Enter the a value: "))
+
+                    b = int(input("Enter the b value: "))
+
+                    clear()
+
+                    if affinecipher(enc, text, a, b) is False:
+                        print("\na not coprime with 26! Check number and try again\n\n")
+                        pass
+
+                    print("Given plaintext:", text)
+                    print("Given a variable:", a)
+                    print("Given b variable:", b)
+                    print("Ciphertext output:", affinecipher(enc, text, a, b))
+
+                    choice = input("\n1. Back to main menu\n2. Exit\n\n")
+
+                    if choice == "1":
+                        clear()
+                        pass
+                    else:
+                        exitcond = True
+
+                else:
+                    enc = False
+
+                    text = input("Enter ciphertext: ")
+
+                    print("This must be coprime to 26!")
+                    a = int(input("Enter the a value: "))
+
+                    b = int(input("Enter the b value: "))
+
+                    clear()
+
+                    if affinecipher(enc, text, a, b) is False:
+                        print("\na not coprime with 26! Check number and try again\n\n")
+                        pass
+
+                    print("Given ciphertext:", text)
+                    print("Given a variable:", a)
+                    print("Given b variable:", b)
+                    print("Plaintext output:", affinecipher(enc, text, a, b))
+
+                    choice = input("\n1. Back to main menu\n2. Exit\n\n")
+
+                    if choice == "1":
+                        clear()
+                        pass
+                    else:
+                        exitcond = True
 
         except KeyboardInterrupt:
             print("Keyboard Interrupt received, exiting!")
